@@ -8,7 +8,7 @@ env:
   CLANG_FORMAT_CMD: clang-format-14
 jobs:
   smoke-sketches:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
     - name: Cache arduino dep downloads
@@ -19,7 +19,7 @@ jobs:
     - run: make setup
     - run: KALEIDOSCOPE_TEMP_PATH=${{ github.workspace}}/.kaleidoscope-temp make -j $(nproc) smoke-sketches
   run-google-tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
     - name: Cache arduino dep downloads
@@ -33,27 +33,27 @@ jobs:
     - run: make setup
     - run: KALEIDOSCOPE_CCACHE=1 make -j $(nproc) --output-sync=recurse simulator-tests
   check-code-style:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
     - run: KALEIDOSCOPE_CODE_FORMATTER=clang-format-14 make check-code-style
   check-shellcheck:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
     - run: make shellcheck
   check-cpplint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
     - run: make cpplint
   find-filename-conflicts:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v2
     - run: make find-filename-conflicts 
   publish-arduino-package-on-every-commit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: github.ref == 'refs/heads/master'
     steps:
     - uses: actions/checkout@v2
