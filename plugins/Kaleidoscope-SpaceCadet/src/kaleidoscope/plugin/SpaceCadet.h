@@ -38,8 +38,10 @@
 // -----------------------------------------------------------------------------
 
 #ifndef SPACECADET_MAP_END
-#define SPACECADET_MAP_END \
-  (kaleidoscope::plugin::SpaceCadet::KeyBinding) { Key_NoKey, Key_NoKey, 0 }
+#define SPACECADET_MAP_END                         \
+  (kaleidoscope::plugin::SpaceCadet::KeyBinding) { \
+    Key_NoKey, Key_NoKey, 0                        \
+  }
 #endif
 
 constexpr Key Key_SpaceCadetEnable  = Key(kaleidoscope::ranges::SC_FIRST);
