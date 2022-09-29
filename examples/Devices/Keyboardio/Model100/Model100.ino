@@ -184,10 +184,12 @@ enum {
   *
   */
 
-#define PRIMARY_KEYMAP_QWERTY
+// #define PRIMARY_KEYMAP_QWERTY
 // #define PRIMARY_KEYMAP_DVORAK
 // #define PRIMARY_KEYMAP_COLEMAK
-// #define PRIMARY_KEYMAP_CUSTOM
+#define PRIMARY_KEYMAP_CUSTOM
+
+#define _OSX_
 
 
 /* This comment temporarily turns off astyle's indent enforcement
@@ -250,18 +252,26 @@ KEYMAPS(
 #elif defined (PRIMARY_KEYMAP_CUSTOM)
   // Edit this keymap to make a custom layout
   [PRIMARY] = KEYMAP_STACKED
-  (___,          Key_1, Key_2, Key_3, Key_4, Key_5, Key_LEDEffectNext,
-   Key_Backtick, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
-   Key_PageUp,   Key_A, Key_S, Key_D, Key_F, Key_G,
-   Key_PageDown, Key_Z, Key_X, Key_C, Key_V, Key_B, Key_Escape,
+  (Key_Escape,                Key_1, Key_2, Key_3, Key_4, Key_5, Key_Backtick,
+   Key_NonUsBackslashAndPipe, Key_Q, Key_W, Key_E, Key_R, Key_T, Key_Tab,
+   Key_LeftBracket,           Key_A, Key_S, Key_D, Key_F, Key_G,
+   Key_RightBracket,          Key_Z, Key_X, Key_C, Key_V, Key_B, Key_LeftAlt,
+#if defined (_OSX_)
    Key_LeftControl, Key_Backspace, Key_LeftGui, Key_LeftShift,
+#else
+   Key_LeftGui, Key_Backspace, Key_LeftControl, Key_LeftShift,
+#endif
    ShiftToLayer(FUNCTION),
 
-   M(MACRO_ANY),  Key_6, Key_7, Key_8,     Key_9,         Key_0,         LockLayer(NUMPAD),
+   Key_Backslash, Key_6, Key_7, Key_8,     Key_9,         Key_0,         Key_Delete,
    Key_Enter,     Key_Y, Key_U, Key_I,     Key_O,         Key_P,         Key_Equals,
                   Key_H, Key_J, Key_K,     Key_L,         Key_Semicolon, Key_Quote,
    Key_RightAlt,  Key_N, Key_M, Key_Comma, Key_Period,    Key_Slash,     Key_Minus,
-   Key_RightShift, Key_LeftAlt, Key_Spacebar, Key_RightControl,
+#if defined (_OSX_)
+   Key_RightShift, Key_RightControl, Key_Spacebar, Key_RightGui,
+#else
+   Key_RightShift, Key_RightControl, Key_Spacebar, Key_LeftAlt,
+#endif
    ShiftToLayer(FUNCTION)),
 
 #else
@@ -271,6 +281,39 @@ KEYMAPS(
 #endif
 
 
+#if defined (PRIMARY_KEYMAP_CUSTOM)
+
+  [NUMPAD] =  KEYMAP_STACKED
+  (___,  ___,           Key_Clear,       Key_KeypadDivide,   Key_KeypadMultiply, Key_KeypadEquals,   ___,
+   ___,  ___,           Key_Keypad7,     Key_Keypad8,        Key_Keypad9,        Key_KeypadSubtract, ___,
+   ___,  Key_Backspace, Key_Keypad4,     Key_Keypad5,        Key_Keypad6,        Key_KeypadAdd,
+   ___,  ___,           Key_Keypad1,     Key_Keypad2,        Key_Keypad3,        Key_KeypadEnter,    ___,
+   Key_Keypad0, Key_KeypadDot, ___, ___,
+   ___,
+
+   M(MACRO_VERSION_INFO),  ___, ___, ___, ___, ___, ___,
+   ___,                    ___, ___, ___, ___, ___, ___,
+                           ___, ___, ___, ___, ___, ___,
+   ___,                    ___, ___, ___, ___, ___, ___,
+   ___, ___, ___, ___,
+   ___),
+
+  [FUNCTION] =  KEYMAP_STACKED
+  (XXX,               Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5,           Key_LEDEffectNext,
+   ___,               Consumer_Stop,   Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   Consumer_Play,    ___,
+   Key_PcApplication, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
+   LockLayer(NUMPAD), Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,              ___,
+   ___, ___, ___, ___,
+   ___,
+
+   ___, Key_F6,        Key_F7,        Key_F8,      Key_F9,         Key_F10, Key_F11,
+   ___, ___,           ___,           ___,         ___,            ___,     Key_F12,
+        Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___,     ___,
+   ___, Key_Home,      Key_PageDown,  Key_PageUp,  Key_End,        ___,     ___,
+   ___, ___, ___, ___,
+   ___)
+
+#else
 
   [NUMPAD] =  KEYMAP_STACKED
   (___, ___, ___, ___, ___, ___, ___,
@@ -301,6 +344,9 @@ KEYMAPS(
    Key_PcApplication,          Consumer_Mute,          Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,             Key_Backslash,    Key_Pipe,
    ___, ___, Key_Enter, ___,
    ___)
+
+#endif
+
 ) // KEYMAPS(
 
 /* Re-enable astyle's indent enforcement */
@@ -468,7 +514,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // Shifts when held. SpaceCadetConfig lets Chrysalis configure some aspects of
   // the plugin.
   SpaceCadet,
-  SpaceCadetConfig,
+  //SpaceCadetConfig,
 
   // Focus allows bi-directional communication with the host, and is the
   // interface through which the keymap in EEPROM can be edited.
@@ -507,26 +553,26 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The chase effect follows the adventure of a blue pixel which chases a red pixel across
   // your keyboard. Spoiler: the blue pixel never catches the red pixel
-  LEDChaseEffect,
+  //LEDChaseEffect,
 
   // These static effects turn your keyboard's LEDs a variety of colors
-  solidRed,
+  //solidRed,
   solidOrange,
   solidYellow,
   solidGreen,
   solidBlue,
-  solidIndigo,
-  solidViolet,
+  //solidIndigo,
+  //solidViolet,
 
   // The breathe effect slowly pulses all of the LEDs on your keyboard
-  LEDBreatheEffect,
+  //LEDBreatheEffect,
 
   // The AlphaSquare effect prints each character you type, using your
   // keyboard's LEDs as a display
-  AlphaSquareEffect,
+  //AlphaSquareEffect,
 
   // The stalker effect lights up the keys you've pressed recently
-  StalkerEffect,
+  //StalkerEffect,
 
   // The LED Palette Theme plugin provides a shared palette for other plugins,
   // like Colormap below
@@ -543,7 +589,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   Macros,
 
   // The MouseKeys plugin lets you add keys to your keymap which move the mouse.
-  MouseKeys,
+  //MouseKeys,
 
   // The HostPowerManagement plugin allows us to turn LEDs off when then host
   // goes to sleep, and resume them when it wakes up.
@@ -552,7 +598,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The MagicCombo plugin lets you use key combinations to trigger custom
   // actions - a bit like Macros, but triggered by pressing multiple keys at the
   // same time.
-  MagicCombo,
+  //MagicCombo,
 
   // The USBQuirks plugin lets you do some things with USB that we aren't
   // comfortable - or able - to do automatically, but can be useful
@@ -563,20 +609,20 @@ KALEIDOSCOPE_INIT_PLUGINS(
   // The Qukeys plugin enables the "Secondary action" functionality in
   // Chrysalis. Keys with secondary actions will have their primary action
   // performed when tapped, but the secondary action when held.
-  Qukeys,
+  //Qukeys,
 
   // Enables the "Sticky" behavior for modifiers, and the "Layer shift when
   // held" functionality for layer keys.
-  OneShot,
-  EscapeOneShot,
-  EscapeOneShotConfig,
+  //OneShot,
+  //EscapeOneShot,
+  //EscapeOneShotConfig,
 
   // Turns LEDs off after a configurable amount of idle time.
-  IdleLEDs,
-  PersistentIdleLEDs,
+  //IdleLEDs,
+  //PersistentIdleLEDs,
 
   // Enables dynamic, Chrysalis-editable macros.
-  DynamicMacros,
+  //DynamicMacros,
 
   // The FirmwareVersion plugin lets Chrysalis query the version of the firmware
   // programmatically.
@@ -588,11 +634,12 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // Enables setting, saving (via Chrysalis), and restoring (on boot) the
   // default LED mode.
-  DefaultLEDModeConfig,
+  DefaultLEDModeConfig //,
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
-  GeminiPR);
+  //GeminiPR
+  );
 
 /** The 'setup' function is one of the two standard Arduino sketch functions.
  * It's called when your keyboard first powers up. This is where you set up
@@ -611,7 +658,7 @@ void setup() {
   NumPad.numPadLayer = NUMPAD;
 
   // We configure the AlphaSquare effect to use RED letters
-  AlphaSquare.color = CRGB(255, 0, 0);
+  //AlphaSquare.color = CRGB(255, 0, 0);
 
   // Set the rainbow effects to be reasonably bright, but low enough
   // to mitigate audible noise in some environments.
@@ -624,7 +671,7 @@ void setup() {
   // The LED Stalker mode has a few effects. The one we like is called
   // 'BlazingTrail'. For details on other options, see
   // https://github.com/keyboardio/Kaleidoscope/blob/master/docs/plugins/LED-Stalker.md
-  StalkerEffect.variant = STALKER(BlazingTrail);
+  //StalkerEffect.variant = STALKER(BlazingTrail);
 
   // To make the keymap editable without flashing new firmware, we store
   // additional layers in EEPROM. For now, we reserve space for eight layers. If
@@ -640,7 +687,7 @@ void setup() {
 
   // For Dynamic Macros, we need to reserve storage space for the editable
   // macros. A kilobyte is a reasonable default.
-  DynamicMacros.reserve_storage(1024);
+  //DynamicMacros.reserve_storage(1024);
 
   // If there's a default layer set in EEPROM, we should set that as the default
   // here.
@@ -649,7 +696,37 @@ void setup() {
   // To avoid any surprises, SpaceCadet is turned off by default. However, it
   // can be permanently enabled via Chrysalis, so we should only disable it if
   // no configuration exists.
-  SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
+  //SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
+
+  //Set the SpaceCadet map
+  //Setting is {KeyThatWasPressed, AlternativeKeyToSend, TimeoutInMS}
+  //Note: must end with the SPACECADET_MAP_END delimiter
+  static kaleidoscope::plugin::SpaceCadet::KeyBinding spacecadetmap[] = {
+
+    // 1st thumb keys from inside are square brackets
+    {Key_LeftShift, Key_LeftBracket, 250},
+    {Key_RightShift, Key_RightBracket, 250},
+
+    // 2nd are parens
+#if defined (_OSX_)
+    {Key_LeftGui, Key_LeftParen, 250},
+#else
+    {Key_LeftControl, Key_LeftParen, 250},
+#endif
+    {Key_RightControl, Key_RightParen, 250},
+
+    // 3rd are back/space
+
+    // 4th - outermost are angle brackets
+#if defined (_OSX_)
+    {Key_LeftControl, Key_LeftAngleBracket, 250},
+    {Key_RightGui, Key_RightAngleBracket, 250},
+#endif
+
+    SPACECADET_MAP_END,
+  };
+  //Set the map.
+  SpaceCadet.setMap(spacecadetmap);
 
   // Editable layer names are stored in EEPROM too, and we reserve 16 bytes per
   // layer for them. We need one extra byte per layer for bookkeeping, so we
