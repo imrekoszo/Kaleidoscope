@@ -184,9 +184,9 @@ else
 	$(QUIET) cp "${BUILD_PATH}/${SKETCH_FILE_NAME}.a" "${LIB_FILE_PATH}"
 	$(QUIET) ln -sf "${OUTPUT_FILE_PREFIX}.a" "${OUTPUT_PATH}/${SKETCH_BASE_NAME}-latest.a"
 endif
-ifneq ($(VERBOSE),)
+# ifneq ($(VERBOSE),)
 	$(info Build artifacts can be found in ${BUILD_PATH})
-endif
+# endif
 
 #TODO (arduino team) I'd love to do this with their json output
 #but it's short some of the data we kind of need
