@@ -79,11 +79,11 @@
 #include "Kaleidoscope-USB-Quirks.h"
 
 // Support for secondary actions on keys
-#include "Kaleidoscope-Qukeys.h"
+//#include "Kaleidoscope-Qukeys.h"
 
 // Support for one-shot modifiers and layer keys
-#include "Kaleidoscope-OneShot.h"
-#include "Kaleidoscope-Escape-OneShot.h"
+//#include "Kaleidoscope-OneShot.h"
+//#include "Kaleidoscope-Escape-OneShot.h"
 
 // Support for dynamic, Chrysalis-editable macros
 #include "Kaleidoscope-DynamicMacros.h"
