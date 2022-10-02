@@ -190,7 +190,7 @@ enum {
 // #define PRIMARY_KEYMAP_CUSTOM
 
 #define _OSX_
-
+#define _SPACECADET_TIMEOUT_ 225
 
 /* This comment temporarily turns off astyle's indent enforcement
  *   so we can make the keymaps actually resemble the physical key layout better
@@ -438,7 +438,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The boot greeting effect pulses the LED button for 10 seconds after the
   // keyboard is first connected
-  BootGreetingEffect,
+  //BootGreetingEffect,
 
   // The hardware test mode, which can be invoked by tapping Prog, LED and the
   // left Fn button at the same time.
@@ -604,6 +604,7 @@ void setup() {
   // can be permanently enabled via Chrysalis, so we should only disable it if
   // no configuration exists.
   //SpaceCadetConfig.disableSpaceCadetIfUnconfigured();
+  SpaceCadet.enableWithoutDelay();
 
   //Set the SpaceCadet map
   //Setting is {KeyThatWasPressed, AlternativeKeyToSend, TimeoutInMS}
@@ -611,23 +612,23 @@ void setup() {
   static kaleidoscope::plugin::SpaceCadet::KeyBinding spacecadetmap[] = {
 
     // 1st thumb keys from inside are square brackets
-    {Key_LeftShift, Key_LeftBracket, 250},
-    {Key_RightShift, Key_RightBracket, 250},
+    {Key_LeftShift, Key_LeftBracket, _SPACECADET_TIMEOUT_},
+    {Key_RightShift, Key_RightBracket, _SPACECADET_TIMEOUT_},
 
     // 2nd are parens
 #if defined (_OSX_)
-    {Key_LeftGui, Key_LeftParen, 250},
+    {Key_LeftGui, Key_LeftParen, _SPACECADET_TIMEOUT_},
 #else
-    {Key_LeftControl, Key_LeftParen, 250},
+    {Key_LeftControl, Key_LeftParen, _SPACECADET_TIMEOUT_},
 #endif
-    {Key_RightControl, Key_RightParen, 250},
+    {Key_RightControl, Key_RightParen, _SPACECADET_TIMEOUT_},
 
     // 3rd are back/space
 
     // 4th - outermost are angle brackets
 #if defined (_OSX_)
-    {Key_LeftControl, Key_LeftAngleBracket, 250},
-    {Key_RightGui, Key_RightAngleBracket, 250},
+    {Key_LeftControl, Key_LeftAngleBracket, _SPACECADET_TIMEOUT_},
+    {Key_RightGui, Key_RightAngleBracket, _SPACECADET_TIMEOUT_},
 #endif
 
     SPACECADET_MAP_END,
