@@ -241,15 +241,15 @@ KEYMAPS(
   (XXX,               Key_F1,          Key_F2,                     Key_F3,                   Key_F4,                   Key_F5,           Key_LEDEffectNext,
    ___,               Consumer_Stop,   Consumer_ScanPreviousTrack, Consumer_PlaySlashPause,  Consumer_ScanNextTrack,   Consumer_Play,    ___,
    Key_PcApplication, ___,             Key_Mute,                   Consumer_VolumeDecrement, Consumer_VolumeIncrement, ___,
-   LockLayer(NUMPAD), Key_PrintScreen, Key_Insert,                 Key_CapsLock,              ___,                     ___,              ___,
+LockLayer(NUMPAD), Key_PrintScreen, Key_Insert,                    ___,                      ___,                     ___,              ___,
    ___, ___, ___, ___,
    ___,
 
-   ___, Key_F6,        Key_F7,        Key_F8,      Key_F9,         Key_F10, Key_F11,
-   ___, ___,           ___,           ___,         ___,            ___,     Key_F12,
-        Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___,     ___,
-   ___, Key_Home,      Key_PageDown,  Key_PageUp,  Key_End,        ___,     ___,
-   ___, ___, ___, ___,
+   Key_CapsLock, Key_F6,        Key_F7,        Key_F8,      Key_F9,         Key_F10, Key_F11,
+   ___,          ___,           ___,           ___,         ___,            ___,     Key_F12,
+                 Key_LeftArrow, Key_DownArrow, Key_UpArrow, Key_RightArrow, ___,     ___,
+   ___,          Key_Home,      Key_PageDown,  Key_PageUp,  Key_End,        ___,     ___,
+   ___,          ___, ___, ___,
    ___)
 
 ) // KEYMAPS(
