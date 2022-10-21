@@ -425,7 +425,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // Focus allows bi-directional communication with the host, and is the
   // interface through which the keymap in EEPROM can be edited.
-  Focus,
+  //Focus,
 
   // FocusSettingsCommand adds a few Focus commands, intended to aid in
   // changing some settings of the keyboard, such as the default layer (via the
@@ -442,7 +442,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The hardware test mode, which can be invoked by tapping Prog, LED and the
   // left Fn button at the same time.
-  HardwareTestMode,
+//  HardwareTestMode,
 
   // LEDControl provides support for other LED modes
   LEDControl,
@@ -485,10 +485,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The LED Palette Theme plugin provides a shared palette for other plugins,
   // like Colormap below
-  LEDPaletteTheme,
+//  LEDPaletteTheme,
 
   // The Colormap effect makes it possible to set up per-layer colormaps
-  ColormapEffect,
+  //ColormapEffect,
 
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
@@ -535,15 +535,15 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The FirmwareVersion plugin lets Chrysalis query the version of the firmware
   // programmatically.
-  FirmwareVersion,
+  FirmwareVersion //,
 
   // The LayerNames plugin allows Chrysalis to display - and edit - custom layer
   // names, to be shown instead of the default indexes.
-  LayerNames,
+  //LayerNames,
 
   // Enables setting, saving (via Chrysalis), and restoring (on boot) the
   // default LED mode.
-  DefaultLEDModeConfig //,
+  //DefaultLEDModeConfig //,
 
   // Enables the GeminiPR Stenography protocol. Unused by default, but with the
   // plugin enabled, it becomes configurable - and then usable - via Chrysalis.
