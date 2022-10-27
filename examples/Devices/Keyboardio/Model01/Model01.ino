@@ -304,6 +304,7 @@ static kaleidoscope::plugin::LEDSolidColor solidGreen(0, 160, 0);
 static kaleidoscope::plugin::LEDSolidColor solidBlue(0, 70, 130);
 static kaleidoscope::plugin::LEDSolidColor solidIndigo(0, 0, 170);
 static kaleidoscope::plugin::LEDSolidColor solidViolet(130, 0, 120);
+static kaleidoscope::plugin::LEDSolidColor solidGrey(95, 75, 70);
 
 /** toggleLedsOnSuspendResume toggles the LEDs off when the host goes to sleep,
  * and turns them back on when it wakes up.
@@ -387,7 +388,7 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // Focus allows bi-directional communication with the host, and is the
   // interface through which the keymap in EEPROM can be edited.
-  Focus,
+  //Focus,
 
   // FocusSettingsCommand adds a few Focus commands, intended to aid in
   // changing some settings of the keyboard, such as the default layer (via the
@@ -404,13 +405,15 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The hardware test mode, which can be invoked by tapping Prog, LED and the
   // left Fn button at the same time.
-  HardwareTestMode,
+  //HardwareTestMode,
 
   // LEDControl provides support for other LED modes
   LEDControl,
 
   // We start with the LED effect that turns off all the LEDs.
   LEDOff,
+
+  solidGrey,
 
   // The rainbow effect changes the color of all of the keyboard's keys at the same time
   // running through all the colors of the rainbow.
@@ -438,10 +441,10 @@ KALEIDOSCOPE_INIT_PLUGINS(
 
   // The LED Palette Theme plugin provides a shared palette for other plugins,
   // like Colormap below
-  LEDPaletteTheme,
+  //LEDPaletteTheme,
 
   // The Colormap effect makes it possible to set up per-layer colormaps
-  ColormapEffect,
+  //ColormapEffect,
 
   // The numpad plugin is responsible for lighting up the 'numpad' mode
   // with a custom LED effect
