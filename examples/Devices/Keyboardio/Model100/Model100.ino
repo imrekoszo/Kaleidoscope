@@ -67,7 +67,7 @@
 #include "Kaleidoscope-DefaultLEDModeConfig.h"
 
 // Support for changing the brightness of the LEDs
-#include "Kaleidoscope-LEDBrightnessConfig.h"
+//#include "Kaleidoscope-LEDBrightnessConfig.h"
 
 // Support for Keyboardio's internal keyboard testing mode
 #include "Kaleidoscope-HardwareTestMode.h"
